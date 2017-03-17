@@ -42,8 +42,8 @@ if (isset($_GET['delay'])) { // Delay
     $screenCapture->setDelay($_GET['delay']);
 }
 
-$fileLocation = 'test';
-$screen->save($fileLocation);
+//$fileLocation = 'test';
+//$screen->save($fileLocation);
 
 header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
 header("Pragma: no-cache"); // HTTP 1.0.
