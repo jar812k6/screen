@@ -38,6 +38,10 @@ if (isset($_GET['format'])) { // Format
     $screen->setImageType($_GET['format']);
 }
 
+if (isset($_GET['delay'])) { // Delay
+    $screenCapture->setDelay($_GET['delay']);
+}
+
 $fileLocation = 'test';
 $screen->save($fileLocation);
 
