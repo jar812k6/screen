@@ -39,7 +39,7 @@ if (isset($_GET['format'])) { // Format
 }
 
 if (isset($_GET['delay'])) { // Delay
-    $screenCapture->setDelay($_GET['delay']);
+    $screen->setDelay($_GET['delay']);
 }
 
 $fileLocation = 'test';
