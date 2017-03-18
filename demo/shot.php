@@ -4,7 +4,7 @@
 //require_once '../autoload.php';
 require_once '../vendor/autoload.php';
 
-if (!isset($_GET['url'])) {
+if (!isset($_GET['url']) || !isset($_GET['accessCode']) || $_GET['accessCode'] != 'SS007') {
     exit;
 }
 
