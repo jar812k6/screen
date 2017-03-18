@@ -42,6 +42,10 @@ if (isset($_GET['delay'])) { // Delay
     $screen->setDelay($_GET['delay']);
 }
 
+if (isset($_GET['timeout'])) { // Delay
+    $screen->setTimeout($_GET['timeout']);
+} 
+
 $fileLocation = 'test';
 $screen->save($fileLocation);
 
