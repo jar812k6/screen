@@ -4,6 +4,9 @@ APACHE_ROOT_FOLDER="/var/www/html/"
 INSTALL_FOLDER="screen"
 GITHUB_LINK="https://github.com/jar812k6/screen"
 
+cp -f memory-check.sh /usr/bin/memory-check
+chmod 755 /usr/bin/memory-check
+
 yum update -y
 yum install -y glibc.i686 zlib.i686 fontconfig.i686 libstdc++.i686
 yum install -y git-all
@@ -35,8 +38,6 @@ setenforce 0
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 service httpd restart
 chkconfig httpd on
-cp -f memory-check.sh /usr/bin/memory-check
-chmod 755 /usr/bin/memory-check
 CRONTAB=$(grep memory-check /etc/crontab | wc -l)
 if [ $CRONTAB -eq 0 ]
 then
