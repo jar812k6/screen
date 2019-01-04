@@ -58,5 +58,3 @@ readfile($screen->getImageLocation());
 
 //Remove the file after responding
 unlink($screen->getImageLocation());
-
-$screen->jobs->clean();
