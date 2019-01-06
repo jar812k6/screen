@@ -38,9 +38,12 @@ setenforce 0
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 service httpd restart
 chkconfig httpd on
+chmod 755 /var/www/html/screen/killphantom.sh
 CRONTAB=$(grep memory-check /etc/crontab | wc -l)
 if [ $CRONTAB -eq 0 ]
 then
   echo "* * * * * root memory-check" >> /etc/crontab
+  echo "*/5 * * * * /var/www/html/screen/killphantom.sh >/dev/null 2>&1" >> /etc/crontab
+  echo "0 * * * * rm -f /var/www/html/screen/jobs/*" >> /etc/crontab
 fi
 
