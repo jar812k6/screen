@@ -5,7 +5,10 @@ INSTALL_FOLDER="screen"
 GITHUB_LINK="https://github.com/jar812k6/screen"
 
 cp -f memory-check.sh /usr/bin/memory-check
+cp -f killphantom.sh /usr/bin/killphantom
 chmod 755 /usr/bin/memory-check
+chmod 755 /usr/bin/killphantom
+
 
 yum update -y
 yum install -y glibc.i686 zlib.i686 fontconfig.i686 libstdc++.i686
@@ -38,12 +41,12 @@ setenforce 0
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 service httpd restart
 chkconfig httpd on
-chmod 755 /var/www/html/screen/killphantom.sh
+
 CRONTAB=$(grep memory-check /etc/crontab | wc -l)
 if [ $CRONTAB -eq 0 ]
 then
   echo "* * * * * root memory-check" >> /etc/crontab
-  echo "*/5 * * * * /var/www/html/screen/killphantom.sh >/dev/null 2>&1" >> /etc/crontab
+  echo "*/5 * * * * root killphantom" >> /etc/crontab
   echo "0 * * * * rm -f /var/www/html/screen/jobs/*" >> /etc/crontab
 fi
 
