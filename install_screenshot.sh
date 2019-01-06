@@ -41,7 +41,10 @@ setenforce 0
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 service httpd restart
 chkconfig httpd on
-
+service sendmail stop
+chkconfig sendmail off
+yum -y install epel-release
+yum -y install htop
 CRONTAB=$(grep memory-check /etc/crontab | wc -l)
 if [ $CRONTAB -eq 0 ]
 then
